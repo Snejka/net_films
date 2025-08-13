@@ -1,3 +1,64 @@
 body {
-    background-color: skyblue;
+    background-color: rgb(27, 27, 27);
+    color: whitesmoke;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+a { 
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;   
+    justify-content: center;
+}
+
+#profile-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin-block: 2em;
+    gap: 0 2em;
+
+    .profile-image {
+        color: whitesmoke;
+        transition: transform 0.3s ease;
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 1em;
+            margin: 10px;
+            background: #00eaff;
+            background: radial-gradient(circle, rgba(0, 234, 255, 1) 0%, rgba(0, 0, 0, 1) 100%);
+            width: 100%;
+            height: 100%;
+
+            &:hover {
+                box-shadow: inset 0 0 0 3px whitesmoke;
+            }
+        }
+    }
+}
+
+.btn-border {
+    background: none;
+    border: 2px solid whitesmoke;
+    color: whitesmoke;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 }
