@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+<div class="container mt250">
+    <h1>Qui est-ce ?</h1>
+
+    <div id="profile-images">
+        <a href="{{ path('app_browse') }}" class="profile-image">
+            <img src="https://robohash.org/1" alt="Image user 1">
+            User 1
+        </a>
+
+        <a href="{{ path('app_browse') }}" class="profile-image">
+            <img src="https://robohash.org/2" alt="Image user 2">
+            User 2
+        </a>
+
+        <a href="{{ path('app_browse') }}" class="profile-image">
+            <img src="https://robohash.org/3" alt="Image user 3">
+            User 3
+        </a>
+
+        <a href="{{ path('app_browse') }}" class="profile-image">
+            <img src="https://robohash.org/4" alt="Image user 4">
+            User 4
+        </a>
+
+        <a href="{{ path('app_browse') }}" class="profile-image">
+            <img src="https://robohash.org/5" alt="Image user 5">
+            User 5
+        </a>
+    </div>
+    <button class="btn-border">Gérer les profils</button>
+</div>
+{% endblock %}
