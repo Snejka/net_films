@@ -40,21 +40,15 @@
 
         <ul class="browse-list">
             <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
-                    <progress id="file" value="20" max="100"> 20% </progress>
-                </a>
+                <img src="{{ asset('images/bbb3.jpg') }}" alt="bbb3 vignette">
+                <progress id="file" value="20" max="100"> 20% </progress>
             </li>
         {% for i in 0..3 %}
              <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb1.jpg') }}" alt="bbb1 vignette">
-                </a>
+                <img src="{{ asset('images/bbb1.jpg') }}" alt="bbb1 vignette">
             </li>
             <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
-                </a>
+                <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
             </li>
         {% endfor %}
         </ul>
@@ -66,21 +60,15 @@
 
         <ul class="browse-list">
             <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
-                    <progress id="file" value="72" max="100"> 72% </progress>
-                </a>
+                <img src="{{ asset('images/bbb3.jpg') }}" alt="bbb3 vignette">
+                <progress id="file" value="72" max="100"> 72% </progress>
             </li>
         {% for i in 0..1 %}
              <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb1.jpg') }}" alt="bbb1 vignette">
-                </a>
+                <img src="{{ asset('images/bbb1.jpg') }}" alt="bbb1 vignette">
             </li>
             <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
-                </a>
+                <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
             </li>
         {% endfor %}
         </ul>
@@ -92,37 +80,57 @@
 {# Mocked Data - Change it with dynamic loop and Reusable Twig Component #}
         <ul class="browse-list">
             <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
-                    <progress id="file" value="50" max="100"> 50% </progress>
-                </a>
+                <img src="{{ asset('images/bbb3.jpg') }}" alt="bbb3 vignette">
+                <progress id="file" value="50" max="100"> 50% </progress>
             </li>
         {% for i in 0..2 %}
              <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb1.jpg') }}" alt="bbb1 vignette">
-                    {# <progress id="file" value="72" max="100"> 72% </progress> #}
-                </a>
+                <img src="{{ asset('images/bbb1.jpg') }}" alt="bbb1 vignette">
+                {# <progress id="file" value="72" max="100"> 72% </progress> #}
             </li>
             <li class="browse-item">
-                <a href="">
-                    <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
-                    {# <progress id="file" value="10" max="100"> 72% </progress> #}
-                </a>
+                <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
+                {# <progress id="file" value="10" max="100"> 72% </progress> #}
             </li>
         {% endfor %}
         </ul>
     </section>
 
-    <button id="modal"  onclick="document.getElementById('dialog').showModal()">Open Modal dialog</button>
-
     <dialog id="dialog">
-         {# <form method="dialog">
-            <button type="submit" autofocus>close</button>
-        </form> #}
-        <h2 class="main-title">Gérer les profils</h2>
+        <header class="dialog-header">
+            <h1 class="dialog-title">Gérer les profils</h1>
+            <button class="btn-close" onclick="() => {document.getElementById('dialog').close(); document.body.classList.remove('no-scroll');}">x</button>
+        </header>
         <img src="{{ asset('images/bbb2.jpg') }}" alt="bbb2 vignette">
-        <button class="btn-close" onclick="document.getElementById('dialog').close()">Fermer</button>
+        <footer class="dialog-footer">
+            <button class="btn-close" onclick="document.getElementById('dialog').close()">Regarder</button>
+        </footer>
     </dialog>
 </main>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const dialog = document.getElementById("dialog");
+            
+            document.querySelectorAll(".browse-item").forEach(item => {
+                item.addEventListener("click", () => {
+                    dialog.showModal();
+                    document.body.classList.add("no-scroll");
+                });
+            });
+
+            document.querySelector(".btn-close").addEventListener("click", () => {
+                document.getElementById("dialog").close();
+                document.body.classList.remove("no-scroll");
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
 {% endblock %}
