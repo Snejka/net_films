@@ -2,6 +2,13 @@ body {
     background-color: rgb(27, 27, 27);
     color: whitesmoke;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    accent-color: #ad0d0d;
+    font-size: 16px;
+    margin: 0
+}
+
+* {
+    box-sizing: border-box;
 }
 
 a { 
@@ -9,15 +16,36 @@ a {
     text-decoration: none;
 }
 
+p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
 .container {
-    max-width: 1200px;
+    max-width: 1350px;
     margin: 0 auto;
     padding: 20px;
+    margin-bottom: 2em;
 
+    &.full-width {
+        max-width: 100vw;
+        padding: 0;
+    }
+}
+
+/* Main Page */
+.user-page {
     display: flex;
     flex-direction: column;
     align-items: center;   
     justify-content: center;
+    margin-top: 25vh;
 }
 
 #profile-images {
@@ -57,8 +85,103 @@ a {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 1em;
 
     &:hover {
-        background-color: rgba(255, 255, 255, 0.1);
+        background-color: rgba(255, 255, 255, 0.3);
     }
+}
+
+/* Browse Page */
+.browse-nav {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    background: linear-gradient(to bottom , rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    z-index: 1;
+    margin: 0;;
+
+    #logo {
+        width: 150px;
+    }
+
+    ul { 
+        list-style: none;
+        flex: 1;
+
+        li { 
+            display: inline;
+            padding-inline: 1em;
+        }
+    }
+
+    #avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: solid 3px whitesmoke;
+    }
+}
+
+.browse-trailer {
+    position: relative;
+
+    #trailer-video{
+        width: 100%;
+    }
+
+    .trailer-description {
+        position: absolute;
+        bottom: 100px;
+        max-width: 50vw;
+        left: 0;
+        padding: 1em;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 1);
+        background:rgb(0 0 0 / 60%);
+    }
+}
+
+.browse-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    .browse-item a {
+        display: flex;
+        flex-direction: column;
+        gap: .5em;
+
+        img {
+            width: 100%;
+            width: 200px;
+            height: auto;
+            border-radius: .5em;
+            transition: transform 0.3s ease;
+
+            &:hover {
+                transform: scale(1.05);
+                box-shadow: inset 0 0 0 3px whitesmoke;
+            }
+        }
+
+        progress {
+            width: 100%;
+        }
+    }
+}
+
+/* Modal Dialog */
+[aria-label="close"] {
+  appearance: none;
+  float: right;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+dialog :focus {
+  outline: 2px solid #226DAA;
 }
